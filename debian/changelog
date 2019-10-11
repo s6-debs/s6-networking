@@ -1,3 +1,9 @@
+s6-networking (2.3.1.0-1) stable; urgency=medium
+
+  * New upstream release.
+
+ -- multiplexd <multi@in-addr.xyz>  Sat, 12 Oct 2019 00:13:29 +0100
+
 s6-networking (2.3.0.4-2) stable; urgency=medium
 
   * Bump revision to enable upgrade path from old s6-packaging

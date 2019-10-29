@@ -6,10 +6,10 @@ Uploaders: multiplexd <multi@in-addr.xyz>
 Build-Depends:
  debhelper (>= 10),
  quilt,
- libskarnet-dev (>= 2.9.0.0),
- libexecline-dev (>= 2.5.2.0),
- libs6-dev (>= 2.9.0.0),
- libs6dns-dev (>= 2.3.1.0),
+ libskarnet-dev (>= 2.9.1.0),
+ libexecline-dev (>= 2.5.3.0),
+ libs6-dev (>= 2.9.0.1),
+ libs6dns-dev (>= 2.3.1.1),
  libbearssl-dev (>= 0.6)
 Standards-Version: 3.9.8
 Homepage: https://skarnet.org/s6/s6-networking/
@@ -60,10 +60,10 @@ Depends:
  ${misc:Depends},
  libs6net2.3 (= ${binary:Version}),
  libsbearssl2.3 (= ${binary:Version}),
- libskarnet-dev (>= 2.9.0.0),
- libexecline-dev (>= 2.5.2.0),
- libs6-dev (>= 2.9.0.0),
- libs6dns-dev (>= 2.3.1.0),
+ libskarnet-dev (>= 2.9.1.0),
+ libexecline-dev (>= 2.5.3.0),
+ libs6-dev (>= 2.9.0.1),
+ libs6dns-dev (>= 2.3.1.1),
  libbearssl-dev (>= 0.6)
 Description: UCSPI Unix and TCP tools, access control tools, and network time management utilities (development files)
  s6-networking is a suite of small networking utilities for Unix systems. It

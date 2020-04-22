@@ -17,7 +17,11 @@ Homepage: https://skarnet.org/s6/s6-networking/
 Package: s6-networking
 Architecture: any
 Section: net
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+ execline (>= 2.6.0.0),
+ s6 (>= 2.9.1.0)
 Description: UCSPI Unix and TCP tools, access control tools, and network time management utilities
  s6-networking is a suite of small networking utilities for Unix systems. It
  includes command-line client and server management, TCP access control, privilege

@@ -1,3 +1,9 @@
+s6-networking (2.3.1.2-2) stable; urgency=medium
+
+  * Fix runtime dependencies.
+
+ -- multiplexd <multi@in-addr.xyz>  Wed, 22 Apr 2020 12:31:08 +0100
+
 s6-networking (2.3.1.2-1) stable; urgency=medium
 
   * New upstream release.

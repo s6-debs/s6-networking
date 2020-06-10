@@ -1,3 +1,9 @@
+s6-networking (2.3.1.2-3) stable; urgency=low
+
+  * Clean package sources and fix metadata
+
+ -- multiplexd <multi@in-addr.xyz>  Wed, 10 Jun 2020 20:52:00 +0100
+
 s6-networking (2.3.1.2-2) stable; urgency=medium
 
   * Fix runtime dependencies.

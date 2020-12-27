@@ -1,12 +1,12 @@
 Source: s6-networking
 Section: net
 Priority: optional
-Maintainer: multiplexd <multi@in-addr.xyz>
+Maintainer: multi <multi@in-addr.xyz>
 Build-Depends:
  debhelper (>= 10),
  quilt,
- libskarnet-dev (>= 2.9.2.0),
- libexecline-dev (>= 2.6.0.0),
+ libskarnet-dev (>= 2.9.3.0),
+ libexecline-dev (>= 2.6.1.1),
  libs6-dev (>= 2.9.1.0),
  libs6dns-dev (>= 2.3.2.0),
  libbearssl-dev (>= 0.6)
@@ -19,7 +19,7 @@ Section: net
 Depends:
  ${misc:Depends},
  ${shlibs:Depends},
- execline (>= 2.6.0.0),
+ execline (>= 2.6.1.1),
  s6 (>= 2.9.1.0)
 Description: UCSPI Unix and TCP tools, access control tools, and network time management utilities
  s6-networking is a suite of small networking utilities for Unix systems. It
@@ -63,8 +63,8 @@ Depends:
  ${misc:Depends},
  libs6net2.3 (= ${binary:Version}),
  libsbearssl2.3 (= ${binary:Version}),
- libskarnet-dev (>= 2.9.2.0),
- libexecline-dev (>= 2.6.0.0),
+ libskarnet-dev (>= 2.9.3.0),
+ libexecline-dev (>= 2.6.1.1),
  libs6-dev (>= 2.9.1.0),
  libs6dns-dev (>= 2.3.2.0),
  libbearssl-dev (>= 0.6)

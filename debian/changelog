@@ -1,3 +1,9 @@
+s6-networking (2.4.1.0-1) buster; urgency=medium
+
+  * New upstream release.
+
+ -- multi <multi@in-addr.xyz>  Sat, 06 Mar 2021 14:05:18 +0000
+
 s6-networking (2.3.2.0-1) stable; urgency=medium
 
   * New upstream release.

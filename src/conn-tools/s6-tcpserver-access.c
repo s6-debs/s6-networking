@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <errno.h>
+#include <stdlib.h>
+
 #include <skalibs/gccattributes.h>
 #include <skalibs/types.h>
 #include <skalibs/strerr2.h>
@@ -17,11 +19,19 @@
 #include <skalibs/djbunix.h>
 #include <skalibs/socket.h>
 #include <skalibs/ip46.h>
+#include <skalibs/exec.h>
 #include <skalibs/unix-timed.h>
-#include <execline/config.h>
+
 #include <s6/accessrules.h>
+
 #include <s6-dns/s6dns.h>
+
+#include <s6-networking/config.h>
 #include <s6-networking/ident.h>
+
+#ifdef S6_NETWORKING_USE_EXECLINE
+#include <execline/config.h>
+#endif
 
 #define USAGE "s6-tcpserver-access [ -v verbosity ] [ -W | -w ] [ -D | -d ] [ -H | -h ] [ -R | -r ] [ -P | -p ] [ -l localname ] [ -B banner ] [ -t timeout ] [ -i rulesdir | -x rulesfile ] prog..."
 #define dieusage() strerr_dieusage(100, USAGE)
@@ -50,7 +60,7 @@ static inline void log_deny (pid_t pid, ip46_t const *ip)
 }
 
 
-int main (int argc, char const *const *argv, char const *const *envp)
+int main (int argc, char const *const *argv)
 {
   s6_accessrules_params_t params = S6_ACCESSRULES_PARAMS_ZERO ;
   stralloc modifs = STRALLOC_ZERO ;
@@ -111,7 +121,7 @@ int main (int argc, char const *const *argv, char const *const *envp)
   if (!argc) dieusage() ;
   if (!*argv[0]) dieusage() ;
 
-  proto = env_get2(envp, "PROTO") ;
+  proto = getenv("PROTO") ;
   if (!proto) strerr_dienotset(100, "PROTO") ;
   protolen = strlen(proto) ;
   {
@@ -119,11 +129,11 @@ int main (int argc, char const *const *argv, char const *const *envp)
     char tmp[protolen + 11] ;
     memcpy(tmp, proto, protolen) ;
     memcpy(tmp + protolen, "REMOTEIP", 9) ;
-    x = env_get2(envp, tmp) ;
+    x = getenv(tmp) ;
     if (!x) strerr_dienotset(100, tmp) ;
     if (!ip46_scan(x, &remoteip)) strerr_dieinvalid(100, tmp) ;
     memcpy(tmp + protolen + 6, "PORT", 5) ;
-    x = env_get2(envp, tmp) ;
+    x = getenv(tmp) ;
     if (!x) strerr_dienotset(100, tmp) ;
     if (!uint160_scan(x, &remoteport)) strerr_dieinvalid(100, tmp) ;
   }
@@ -378,12 +388,16 @@ int main (int argc, char const *const *argv, char const *const *envp)
   stralloc_free(&modifs) ;
   if (verbosity) log_accept(getpid(), &remoteip) ;
   if (params.exec.len)
+#ifdef S6_NETWORKING_USE_EXECLINE
   {
     char *specialargv[4] = { EXECLINE_EXTBINPREFIX "execlineb", "-c", params.exec.s, 0 } ;
-    xpathexec_r((char const *const *)specialargv, envp, env_len(envp), params.env.s, params.env.len) ;
+    xmexec_m((char const *const *)specialargv, params.env.s, params.env.len) ;
   }
+#else
+  strerr_warnw1x("exec file found but ignored because s6-networking was compiled without execline support!") ;
+#endif
 
-  xpathexec_r(argv, envp, env_len(envp), params.env.s, params.env.len) ;
+  xmexec_m(argv, params.env.s, params.env.len) ;
 
  reject:
   if (verbosity >= 2)

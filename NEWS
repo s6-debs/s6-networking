@@ -1,5 +1,26 @@
 Changelog for s6-networking.
 
+In 2.4.1.0
+----------
+
+ - Bugfixes.
+ - Handshake timeout now also works with the libtls backend.
+ - The SNI server name is now exported after the handshake in
+the SSL_TLS_SNI_SERVERNAME variable.
+
+
+In 2.4.0.0
+----------
+
+ - Can be built against OpenSSL + libretls.
+ - execline is now optional.
+ - s6-tlsc and s6-tlsd rewrite. They're now wrappers around new
+binaries: s6-tlsc-io and s6-tlsd-io, which establish and run a
+TLS tunnel over already existing fds.
+ - New functionality: s6-ucspitlsc and s6-ucspitlsd, for an
+implementation of delayed encryption.
+
+
 In 2.3.2.0
 ----------
 

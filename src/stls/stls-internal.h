@@ -3,9 +3,11 @@
 #ifndef STLS_INTERNAL_H
 #define STLS_INTERNAL_H
 
-#include <sys/types.h>
-#include <stdint.h>
+#include <tls.h>
 
-extern pid_t stls_prep_spawn_drop (char const *const *, char const *const *, int *, uid_t, gid_t, uint32_t) ;
+#include <skalibs/tai.h>
+
+extern void stls_drop (void) ;
+extern void stls_handshake (struct tls *, tain_t const *) ;
 
 #endif

@@ -5,10 +5,10 @@ Maintainer: multi <multi@in-addr.xyz>
 Build-Depends:
  debhelper (>= 10),
  quilt,
- libskarnet-dev (>= 2.10.0.2),
- libexecline-dev (>= 2.7.0.1),
- libs6-dev (>= 2.10.0.2),
- libs6dns-dev (>= 2.3.5.0),
+ libskarnet-dev (>= 2.10.0.3),
+ libexecline-dev (>= 2.8.0.1),
+ libs6-dev (>= 2.10.0.3),
+ libs6dns-dev (>= 2.3.5.1),
  libbearssl-dev (>= 0.6)
 Standards-Version: 3.9.8
 Homepage: https://skarnet.org/s6/s6-networking/
@@ -19,8 +19,8 @@ Section: net
 Depends:
  ${misc:Depends},
  ${shlibs:Depends},
- execline (>= 2.7.0.1),
- s6 (>= 2.10.0.2)
+ execline (>= 2.8.0.1),
+ s6 (>= 2.10.0.3)
 Description: UCSPI Unix and TCP tools, access control tools, and network time management utilities
  s6-networking is a suite of small networking utilities for Unix systems. It
  includes command-line client and server management, TCP access control, privilege
@@ -63,10 +63,10 @@ Depends:
  ${misc:Depends},
  libs6net2.4 (= ${binary:Version}),
  libsbearssl2.4 (= ${binary:Version}),
- libskarnet-dev (>= 2.10.0.2),
- libexecline-dev (>= 2.7.0.1),
- libs6-dev (>= 2.10.0.2),
- libs6dns-dev (>= 2.3.5.0),
+ libskarnet-dev (>= 2.10.0.3),
+ libexecline-dev (>= 2.8.0.1),
+ libs6-dev (>= 2.10.0.3),
+ libs6dns-dev (>= 2.3.5.1),
  libbearssl-dev (>= 0.6)
 Description: UCSPI Unix and TCP tools, access control tools, and network time management utilities (development files)
  s6-networking is a suite of small networking utilities for Unix systems. It
